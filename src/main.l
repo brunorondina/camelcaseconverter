@@ -14,6 +14,26 @@ int i, n, j, z=0, erro=0;
 [a-z]*[ \t\n]*[A-Z]+"_"+ {
 	erro=1;
 }
+^[A-Z][a-z]*[ \t\n] {
+	strcpy(c2, yytext);
+	n = strlen(c2);
+	for (j=0; j<=n; j++){
+			c[z]=c2[j];
+			z++;
+	}	
+	z--;
+}
+[ \t\n][A-Z] {
+	strcpy(c2, yytext);
+	n = strlen(c2);
+	c2[1]+=32;
+	for (j=0; j<=n; j++){
+			c[z]=c2[j];
+			z++;
+	}
+		
+	z--;
+}
 ^[A-Z][a-z] {
 	strcpy(c1, yytext);
 	strcpy(c2, yytext);
